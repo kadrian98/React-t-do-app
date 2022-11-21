@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import StateContext from "../StateContext";
 import DispatchContext from "../DispatchContext";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Fab from "@mui/material/Fab";
+import EditIcon from "@mui/icons-material/Edit";
 
 const useFetchPost = id => {
   const [post, setPost] = useState();
@@ -86,14 +90,38 @@ function ViewSinglePost() {
     <Page title={post.title}>
       {isOwner() && (
         <>
-          <button onClick={deleteHandler} data-tip="Delete" data-for="delete">
+          {/* <button onClick={deleteHandler} data-tip="Delete" data-for="delete">
             Delete
           </button>
-          <ReactTooltip id="delete" className="custom-tooltip" />
-          <button data-tip="Edit" data-for="edit">
+          <ReactTooltip id="delete" className="custom-tooltip" /> */}
+
+          <IconButton
+            color="error"
+            aria-label="delete"
+            onClick={deleteHandler}
+            data-tip="Delete"
+            data-for="delete"
+          >
+            <DeleteIcon />
+            <ReactTooltip id="delete" className="custom-tooltip" />
+          </IconButton>
+
+          <Link to={`/post/${post._id}/edit`}>
+            <Fab
+              color="secondary"
+              aria-label="edit"
+              data-tip="Edit"
+              data-for="edit"
+            >
+              <EditIcon />
+              <ReactTooltip id="edit" className="custom-tooltip" />
+            </Fab>
+          </Link>
+
+          {/* <button data-tip="Edit" data-for="edit">
             <ReactTooltip id="edit" className="custom-tooltip" />
             <Link to={`/post/${post._id}/edit`}>Edit</Link>
-          </button>
+          </button> */}
         </>
       )}
 

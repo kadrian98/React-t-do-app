@@ -71,6 +71,7 @@ function EditPost() {
       case "notFound":
         draft.notFound = true;
         return;
+        
     }
   }
 

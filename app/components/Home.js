@@ -1,16 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Page from "./Page";
+import StateContext from "../StateContext";
+import { Button } from "@mui/material";
 
 function Home() {
+  const appState = useContext(StateContext);
   return (
     <Page title="Welcome!">
       <section id="postingSection">
-        <h1 className="upper">
-          Hello, {localStorage.getItem("TodoAppUsername")}
-        </h1>
+        <h1 className="upper">Hello, {appState.user.username}</h1>
         <Link to="/CreatePost">
-          <button type="submit">Add task</button>
+          <Button type="submit" variant="contained" color="success">
+            Add task
+          </Button>
         </Link>
       </section>
     </Page>

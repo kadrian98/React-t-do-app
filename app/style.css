@@ -203,6 +203,7 @@ nav ul.dropdown-list {
 .hamburger,
 .brand {
   z-index: 9999;
+  text-decoration: none;
 }
 
 .mobile ul.nav-list.open {
@@ -752,4 +753,8 @@ button[type="submit"]:hover {
     visibility: hidden;
     transform: translateX(-50%) scale(1.2);
   }
+}
+
+.footerLink {
+  text-decoration: none;
 }

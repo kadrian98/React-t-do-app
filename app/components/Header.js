@@ -1,8 +1,9 @@
-import React, { useStatez, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import HeaderLoggedOut from "./HeaderLoggedOut";
 import HeaderLoggedIn from "./HeaderLoggedIn";
 import StateContext from "../StateContext";
+import "../menu.js";
 
 function Header(props) {
   const appState = useContext(StateContext);
@@ -10,12 +11,12 @@ function Header(props) {
   return (
     <nav>
       <div className="container nav-wrapper">
-        <div className="brand">
+        <Link to="/" className="brand">
           <span className="material-symbols-outlined"> rocket_launch </span>
           <span>
             <strong>TO-DO REACT</strong>
           </span>
-        </div>
+        </Link>
         <div className="hamburger">
           <span></span>
           <span></span>

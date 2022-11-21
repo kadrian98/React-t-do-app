@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
 import DispatchContext from "../DispatchContext";
+import { TextField, Button } from "@mui/material";
 
 function HeaderLoggedOut(props) {
   const appDispatch = useContext(DispatchContext);
@@ -38,12 +39,18 @@ function HeaderLoggedOut(props) {
       <button className="btn">Login</button>
       <ul className="dropdown-list">
         <form onSubmit={handleSubmit} id="login-form">
-          <input
+          {/* <input
             onChange={e => setUsername(e.target.value)}
             type="text"
             id="fname"
             name="firstname"
             placeholder="Login.."
+          /> */}
+          <TextField
+            onChange={e => setUsername(e.target.value)}
+            id="filled-basic"
+            label="Filled"
+            variant="filled"
           />
 
           <input
@@ -54,7 +61,10 @@ function HeaderLoggedOut(props) {
             placeholder="Password.."
           />
 
-          <input type="submit" value="Sign in" />
+          {/* <input type="submit" value="Sign in" /> */}
+          <Button type="submit" variant="contained">
+            Contained
+          </Button>
         </form>
       </ul>
     </li>
