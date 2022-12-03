@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Page from "./Page";
+import { Logo } from "./style/formik.style";
 
 function About() {
   return (
@@ -10,7 +11,7 @@ function About() {
           <div className="content-container">
             <div className="offer-container">
               Your private account
-              <img src="/logo.png" alt="" />
+              <Logo src="logo.png" alt="" />
             </div>
             <div className="offer-container">
               Functionaly to-do list

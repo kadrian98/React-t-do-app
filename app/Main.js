@@ -21,7 +21,6 @@ import FlashMessages from "./components/FlashMessages";
 import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
-import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 import TestForm from "./components/TestForm";
 
 function Main() {
@@ -100,14 +99,15 @@ function Main() {
           <Header />
           <Routes>
             <Route path="/Profile/:username/*" element={<Profile />} />
-            <Route path="/" element={state.loggedIn ? <Home /> : <Content />} />
-            <Route path="/test" element={<RegisterForm />} />
+            <Route
+              path="/"
+              element={state.loggedIn ? <Home /> : <TestForm />}
+            />
             <Route path="/Post/:id" element={<ViewSinglePost />} />
             <Route path="/Post/:id/edit" element={<EditPost />} />
             <Route path="/CreatePost" element={<CreatePost />} />
             <Route path="/About" element={<About />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/TestForm" element={<TestForm />} />
           </Routes>
           <Footer />
         </BrowserRouter>

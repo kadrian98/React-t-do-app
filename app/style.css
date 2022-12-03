@@ -758,3 +758,7 @@ button[type="submit"]:hover {
 .footerLink {
   text-decoration: none;
 }
+
+#outlined-required {
+  background-color: #fff;
+}
