@@ -1,19 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 50%;
+  min-width: 300px;
   margin: auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
 
-  input[type="username"] {
+  form {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  input[type="username"],
+  input[type="email"],
+  input[type="password"] {
     width: 250px;
     color: #fff !important;
-    border: 1px solid #fff;
-    Button[type="submit"] {
-      width: 100px;
-    }
+  }
+  Button[type="submit"] {
+    width: 100px;
   }
 `;
 

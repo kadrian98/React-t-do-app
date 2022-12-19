@@ -1,67 +1,58 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useFormik } from "formik";
 import Axios from "axios";
 import DispatchContext from "../DispatchContext";
 import { TextField, Button } from "@mui/material";
 
-function HeaderLoggedOut(props) {
+const HeaderLoggedOut = () => {
   const appDispatch = useContext(DispatchContext);
 
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    try {
-      const response = await Axios.post("/login", {
-        username,
-        password
-      });
-      if (response.data) {
-        appDispatch({ type: "login", data: response.data });
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: ""
+    },
+    onSubmit: async values => {
+      try {
+        const response = await Axios.post("/login", values);
+        if (response.data) {
+          appDispatch({ type: "login", data: response.data });
+          appDispatch({
+            type: "flashMessage",
+            value: "You have sucesfully logged in"
+          });
+        } else {
+          appDispatch({
+            type: "errorMessage",
+            value: "Invalid username / password"
+          });
+        }
+      } catch (e) {
         appDispatch({
-          type: "flashMessage",
-          value: "You have sucesfully logged in"
-        });
-      } else {
-        console.log("incorrect username/password");
-        appDispatch({
-          type: "flashMessage",
-          value: "Invalid username / password"
+          type: "errorMessage",
+          value: "Problem with sending request"
         });
       }
-    } catch (e) {
-      console.log("there was a problem");
     }
-  }
+  });
 
   return (
     <li>
       <button className="btn">Login</button>
       <ul className="dropdown-list">
-        <form onSubmit={handleSubmit} id="login-form">
-          {/* <input
-            onChange={e => setUsername(e.target.value)}
-            type="text"
-            id="fname"
-            name="firstname"
-            placeholder="Login.."
-          /> */}
+        <form onSubmit={formik.handleSubmit} id="login-form">
           <TextField
-            onChange={e => setUsername(e.target.value)}
             id="filled-basic"
-            label="Filled"
-            variant="filled"
+            label="Username"
+            {...formik.getFieldProps("username")}
           />
-
-          <input
-            onChange={e => setPassword(e.target.value)}
+          <TextField
+            id="outlined-password-input"
+            label="Password"
             type="password"
-            id="lname"
-            name="password"
-            placeholder="Password.."
+            autoComplete="off"
+            {...formik.getFieldProps("password")}
           />
-
-          {/* <input type="submit" value="Sign in" /> */}
           <Button type="submit" variant="contained">
             Contained
           </Button>
@@ -69,6 +60,6 @@ function HeaderLoggedOut(props) {
       </ul>
     </li>
   );
-}
+};
 
 export default HeaderLoggedOut;

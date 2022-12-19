@@ -4,7 +4,7 @@ import Page from "./Page";
 import StateContext from "../StateContext";
 import { Button } from "@mui/material";
 
-function Home() {
+function ContentLoggedIn() {
   const appState = useContext(StateContext);
   return (
     <Page title="Welcome!">
@@ -20,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default ContentLoggedIn;

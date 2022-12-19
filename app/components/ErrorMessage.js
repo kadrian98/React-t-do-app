@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 
-function FlashMessages(props) {
+function ErrorMessage(props) {
   return (
     <div className="floating-alerts">
       {props.messages.map((msg, index) => {
         return (
           <div
             key={index}
-            className="alert alert-success text-center floating-alert shadow-sm"
+            className="alert alert-danger text-center floating-alert shadow-sm"
           >
             {msg}
           </div>
@@ -17,4 +17,4 @@ function FlashMessages(props) {
   );
 }
 
-export default FlashMessages;
+export default ErrorMessage;

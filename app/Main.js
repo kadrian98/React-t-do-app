@@ -12,21 +12,23 @@ import DispatchContext from "./DispatchContext";
 // My Components
 import Header from "./components/Header";
 import Content from "./components/Content";
-import Home from "./components/Home";
+import ContentLoggedIn from "./components/ContentLoggedIn";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import CreatePost from "./components/CreatePost";
 import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessages from "./components/FlashMessages";
+import ErrorMessage from "./components/ErrorMessage";
 import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
-import TestForm from "./components/TestForm";
+import ContentLoggedOut from "./components/ContentLoggedOut";
 
 function Main() {
   const initialState = {
     loggedIn: Boolean(localStorage.getItem("TodoAppToken")),
     flashMessages: [],
+    errorMessage: [],
     user: {
       token: localStorage.getItem("TodoAppToken"),
       username: localStorage.getItem("TodoAppUsername"),
@@ -46,9 +48,10 @@ function Main() {
       case "flashMessage":
         draft.flashMessages.push(action.value);
         return;
+      case "errorMessage":
+        draft.errorMessage.push(action.value);
     }
   }
-
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
 
   useEffect(() => {
@@ -96,12 +99,15 @@ function Main() {
       <DispatchContext.Provider value={dispatch}>
         <BrowserRouter>
           <FlashMessages messages={state.flashMessages} />
+          <ErrorMessage messages={state.errorMessage} />
           <Header />
           <Routes>
             <Route path="/Profile/:username/*" element={<Profile />} />
             <Route
               path="/"
-              element={state.loggedIn ? <Home /> : <TestForm />}
+              element={
+                state.loggedIn ? <ContentLoggedIn /> : <ContentLoggedOut />
+              }
             />
             <Route path="/Post/:id" element={<ViewSinglePost />} />
             <Route path="/Post/:id/edit" element={<EditPost />} />

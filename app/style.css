@@ -259,8 +259,7 @@ nav ul.dropdown-list {
   text-align: left;
 }
 
-.container-label-input input[type="text"],
-input[type="password"] {
+.container-label-input input[type="text"] {
   padding: 15px;
   margin: 3px 0;
   border: none;
