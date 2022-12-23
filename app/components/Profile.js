@@ -3,7 +3,7 @@ import Page from "./Page";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 import StateContext from "../StateContext";
-import ProfilePosts from "./ProfilePosts";
+import MyTasks from "./MyTasks";
 
 function Profile() {
   const { username } = useParams();
@@ -30,7 +30,7 @@ function Profile() {
 
   return (
     <Page title="Profile">
-      <ProfilePosts profileData={profileData} setProfileData={setProfileData} />
+      <MyTasks profileData={profileData} setProfileData={setProfileData} />
     </Page>
   );
 }

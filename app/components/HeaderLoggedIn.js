@@ -13,7 +13,7 @@ function HeaderLoggedIn(props) {
     appDispatch({ type: "logout" });
     appDispatch({
       type: "flashMessage",
-      value: "You have sucesfully logged out"
+      value: "You have successfully logged out"
     });
     navigate("/");
   }

@@ -23,8 +23,10 @@ const TestForm = () => {
       username: Yup.string()
         .min(5, "Must be 5 characters or more")
         .max(15, "Must be 15 characters or less")
-        .required("Required"),
-      email: Yup.string().email("Invalid email address").required("Required"),
+        .required("Please fill in this field"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Please fill in this field"),
       password: Yup.string()
         .min(
           8,
@@ -33,7 +35,7 @@ const TestForm = () => {
         .minLowercase(1, "password must contain at least 1 lower case letter")
         .minUppercase(1, "password must contain at least 1 upper case letter")
         .minNumbers(1, "password must contain at least 1 number")
-        .required("Required")
+        .required("Please fill in this field")
     }),
     onSubmit: async values => {
       const response = await Axios.post("/register", values).catch(err => {
@@ -42,6 +44,7 @@ const TestForm = () => {
             type: "errorMessage",
             value: err.response.data
           });
+          s;
         }
       });
 
@@ -56,7 +59,7 @@ const TestForm = () => {
   });
 
   return (
-    <Page title="Test Form">
+    <Page title="To-do React app">
       <Container>
         <form onSubmit={formik.handleSubmit}>
           <h1>Welcome on my React app!</h1>
@@ -71,7 +74,7 @@ const TestForm = () => {
             {...formik.getFieldProps("username")}
           />
           {formik.touched.username && formik.errors.username ? (
-            <div>{formik.errors.username}</div>
+            <div className="required-div">{formik.errors.username}</div>
           ) : null}
           <TextField
             autoComplete="off"
@@ -84,18 +87,18 @@ const TestForm = () => {
             {...formik.getFieldProps("email")}
           />
           {formik.touched.email && formik.errors.email ? (
-            <div>{formik.errors.email}</div>
+            <div className="required-div">{formik.errors.email}</div>
           ) : null}
           <TextField
+            autoComplete="off"
             id="outlined-password-input"
             label="Password"
             type="password"
-            autoComplete="current-password"
             focused
             {...formik.getFieldProps("password")}
           />
           {formik.touched.password && formik.errors.password ? (
-            <div>{formik.errors.password}</div>
+            <div className="required-div">{formik.errors.password}</div>
           ) : null}
           <Button type="submit" variant="contained">
             Submit

@@ -102,15 +102,6 @@ input[type="submit"]:hover {
   border-color: var(--pure);
 }
 
-main section.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 160px;
-}
-
 main section.header h1,
 h2 {
   font-size: 36px;
@@ -296,20 +287,19 @@ button[type="submit"]:hover {
   text-align: center;
 }
 
-.content-container {
+.about-content {
   display: flex;
-  width: 100%;
-  margin: auto;
   justify-content: space-between;
-  margin: 2rem 0;
+  margin: 2rem auto;
   flex-wrap: wrap;
 }
 
 .offer-container {
-  max-width: 300px;
+  width: 300px;
   text-align: center;
   font-weight: 100;
   font-size: 18px;
+  margin: auto;
 }
 
 .offer-container img {
@@ -681,6 +671,13 @@ button[type="submit"]:hover {
     width: 200px;
     margin: auto;
   }
+  #login-form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    padding: 1rem;
+    background-color: #fff;
+  }
 }
 
 .floating-alert {
@@ -760,4 +757,35 @@ button[type="submit"]:hover {
 
 #outlined-required {
   background-color: #fff;
+}
+
+.login-text {
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid grey;
+}
+
+.list-group {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.task-amount-counter {
+  font-size: 24px;
+  margin: 1rem auto;
+}
+
+.required-div {
+  color: #fff;
+  background-color: #a83242;
+  width: 250px;
+  padding: 7px;
+  margin: 0.5rem auto;
+  -webkit-box-shadow: -14px 14px 26px -13px rgba(168, 50, 66, 1);
+  -moz-box-shadow: -14px 14px 26px -13px rgba(168, 50, 66, 1);
+  box-shadow: -14px 14px 26px -13px rgba(168, 50, 66, 1);
 }

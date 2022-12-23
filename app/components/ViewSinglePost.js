@@ -75,7 +75,7 @@ function ViewSinglePost() {
           // 1. display a falsh message
           appDispatch({
             type: "flashMessage",
-            value: "post was sucesfully deleted"
+            value: "post was successfully deleted"
           });
           // 2. redirect back to the current user's profile
           navigate(`/profile/${appState.user.username}`);
@@ -90,11 +90,6 @@ function ViewSinglePost() {
     <Page title={post.title}>
       {isOwner() && (
         <>
-          {/* <button onClick={deleteHandler} data-tip="Delete" data-for="delete">
-            Delete
-          </button>
-          <ReactTooltip id="delete" className="custom-tooltip" /> */}
-
           <IconButton
             color="error"
             aria-label="delete"
@@ -117,17 +112,13 @@ function ViewSinglePost() {
               <ReactTooltip id="edit" className="custom-tooltip" />
             </Fab>
           </Link>
-
-          {/* <button data-tip="Edit" data-for="edit">
-            <ReactTooltip id="edit" className="custom-tooltip" />
-            <Link to={`/post/${post._id}/edit`}>Edit</Link>
-          </button> */}
         </>
       )}
 
       <section id="createPostSection">
         <h1>{post.title}</h1>
         <h5>{post.body}</h5>
+        <h5>{post.selectedDate}</h5>
         <p>{dateFromatted}</p>
       </section>
     </Page>

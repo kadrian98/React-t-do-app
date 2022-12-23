@@ -6,11 +6,11 @@ function About() {
   return (
     <Page title="About">
       <main>
-        <section className="header container">
-          <h1>We offer you:</h1>
-          <div className="content-container">
+        <section className="about-container">
+          <h1 className="header-about">We offer you:</h1>
+          <div className="about-content">
             <div className="offer-container">
-              Your private account
+              Private account
               <Logo src="logo.png" alt="" />
             </div>
             <div className="offer-container">
@@ -18,7 +18,7 @@ function About() {
               <img src="/logo.png" alt="" />
             </div>
             <div className="offer-container">
-              The newest technology based on React
+              React solution
               <img src="./logo.png" alt="" />
             </div>
           </div>
