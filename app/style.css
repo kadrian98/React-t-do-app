@@ -160,35 +160,75 @@ nav ul.dropdown-list {
   display: none;
 }
 
-.mobile .hamburger {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-  cursor: pointer;
-}
+@media only screen and (max-width: 860px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    cursor: pointer;
+  }
 
-.mobile .hamburger span {
-  background: var(--pure);
-  width: 28px;
-  height: 2px;
-  margin-bottom: 8px;
-}
+  .hamburger span {
+    background: var(--pure);
+    width: 28px;
+    height: 2px;
+    margin-bottom: 8px;
+  }
 
-.mobile ul.nav-list {
-  background: -webkit-linear-gradient(45deg, #434343, #000000);
-  background: linear-gradient(45deg, #434343, #000000);
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 80px;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease-in-out;
-  z-index: 10;
+  ul.nav-list {
+    background: -webkit-linear-gradient(45deg, #434343, #000000);
+    background: linear-gradient(45deg, #434343, #000000);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+  }
+
+  ul.nav-list.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hamburger span {
+    transform-origin: left;
+    transition: all 0.3s ease-in-out;
+  }
+
+  ul.nav-list li a {
+    font-size: 20px;
+  }
+
+  ul.dropdown-list {
+    position: relative;
+    background: transparent;
+    text-align: center;
+    height: 0;
+    overflow-y: hidden;
+    transition: opacity 1s ease-in-out;
+    padding-top: 0;
+  }
+
+  .nav-wrapper ul li:hover .dropdown-list {
+    height: max-content;
+    padding-top: 6px;
+  }
+
+  ul.nav-list li {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .nav-wrapper ul.dropdown-list li a {
+    color: var(--dark-gray);
+  }
 }
 
 .hamburger,
@@ -197,43 +237,6 @@ nav ul.dropdown-list {
   text-decoration: none;
 }
 
-.mobile ul.nav-list.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.mobile .hamburger span {
-  transform-origin: left;
-  transition: all 0.3s ease-in-out;
-}
-
-.mobile ul.nav-list li a {
-  font-size: 20px;
-}
-
-.mobile ul.dropdown-list {
-  position: relative;
-  background: transparent;
-  text-align: center;
-  height: 0;
-  overflow-y: hidden;
-  transition: opacity 1s ease-in-out;
-  padding-top: 0;
-}
-
-.mobile .nav-wrapper ul li:hover .dropdown-list {
-  height: max-content;
-  padding-top: 6px;
-}
-
-.mobile ul.nav-list li {
-  margin-left: 0;
-  text-align: center;
-}
-
-.mobile .nav-wrapper ul.dropdown-list li a {
-  color: var(--dark-gray);
-}
 #register-form {
   width: 100%;
 }

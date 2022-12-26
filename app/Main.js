@@ -10,7 +10,7 @@ import StateContext from "./StateContext";
 import DispatchContext from "./DispatchContext";
 
 // My Components
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import ContentLoggedIn from "./components/ContentLoggedIn";
 import Footer from "./components/Footer";
 import About from "./components/About";
