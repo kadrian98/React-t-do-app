@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import DispatchContext from "../DispatchContext";
 import StateContext from "../StateContext";
 
-function HeaderLoggedIn(props) {
+function HeaderLoggedIn({ openMenu }) {
   const navigate = useNavigate();
 
   const appDispatch = useContext(DispatchContext);
@@ -16,10 +16,11 @@ function HeaderLoggedIn(props) {
       value: "You have successfully logged out"
     });
     navigate("/");
+    openMenu();
   }
   return (
     <>
-      <li>
+      <li onClick={openMenu}>
         <Link to={`/Profile/${appState.user.username}`}>My Tasks</Link>
       </li>
       <li>

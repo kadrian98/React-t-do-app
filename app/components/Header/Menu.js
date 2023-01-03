@@ -19,24 +19,32 @@ export const Menu = () => {
 
   const [openClass, setOpenClass] = useState(false);
 
+  function openMenu() {
+    setOpenClass(false);
+  }
+
   return (
     <>
-      <div className="hamburger" onClick={() => setOpenClass(true)}>
+      <div
+        className="hamburger"
+        onClick={() => setOpenClass(prevClass => !prevClass)}
+      >
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <ul
-        className={`nav-list ${openClass ? "open" : ""}`}
-        onClick={() => setOpenClass(false)}
-      >
+      <ul className={`nav-list ${openClass ? "open" : ""}`}>
         {LINKS.map(link => (
-          <li key={link.path}>
+          <li key={link.path} onClick={openMenu}>
             <Link to={link.path}>{link.title}</Link>
           </li>
         ))}
 
-        {appState.loggedIn ? <HeaderLoggedIn /> : <HeaderLoggedOut />}
+        {appState.loggedIn ? (
+          <HeaderLoggedIn openMenu={openMenu} />
+        ) : (
+          <HeaderLoggedOut openMenu={openMenu} />
+        )}
       </ul>
     </>
   );

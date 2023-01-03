@@ -54,7 +54,7 @@ function CreatePost(props) {
   }
   return (
     <Page title="Create Post">
-      <h1>Type down your to do event!</h1>
+      <h1 className="formHeader">Type down your to do event!</h1>
       <form onSubmit={handleSubmit}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDateTimePicker
@@ -81,7 +81,7 @@ function CreatePost(props) {
             placeholder="Description"
             autoComplete="off"
           />
-          ({selectedDate.toJSON()})
+          ({printDate(selectedDate)})
           <button className="postSubmit" type="submit">
             Add
           </button>
@@ -92,3 +92,8 @@ function CreatePost(props) {
 }
 
 export default CreatePost;
+
+function printDate(date) {
+  const parsedDate = new Date(date);
+  return `${parsedDate.getDate()}/${parsedDate.getMonth()}/${parsedDate.getFullYear()}`;
+}

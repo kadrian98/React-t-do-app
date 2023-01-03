@@ -6,6 +6,7 @@ import Axios from "axios";
 import StateContext from "../StateContext";
 import DispatchContext from "../DispatchContext";
 import NotFound from "./NotFound";
+import Loading from "./Loading";
 
 function EditPost() {
   const navigate = useNavigate();
@@ -145,11 +146,12 @@ function EditPost() {
     return <NotFound />;
   }
 
-  if (state.isFetching) return <Page title="...">Loading...</Page>;
+  if (state.isFetching) return <Loading />;
 
   return (
     <Page title="Edit Post">
       <Link to={`/post/${state.id}`}>&laquo; Back to post permalink</Link>
+      <h1 className="formHeader">Edit your post!</h1>
       <form onSubmit={submitHandler}>
         <section id="createPostSection">
           {state.title.hasErrors && (

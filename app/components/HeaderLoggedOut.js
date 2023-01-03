@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import DispatchContext from "../DispatchContext";
 import { TextField, Button, styled } from "@mui/material";
@@ -12,8 +13,9 @@ const CustomizeTextField = styled(TextField)`
   }
 `;
 
-const HeaderLoggedOut = () => {
+const HeaderLoggedOut = ({ openMenu }) => {
   const appDispatch = useContext(DispatchContext);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -29,6 +31,7 @@ const HeaderLoggedOut = () => {
             type: "flashMessage",
             value: "You have successfully logged in"
           });
+          navigate("/");
         } else {
           appDispatch({
             type: "errorMessage",
@@ -63,7 +66,7 @@ const HeaderLoggedOut = () => {
             type="password"
             {...formik.getFieldProps("password")}
           />
-          <Button type="submit" variant="contained">
+          <Button onClick={openMenu} type="submit" variant="contained">
             Contained
           </Button>
         </form>

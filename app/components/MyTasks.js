@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material";
+import Loading from "./Loading";
 
 function MyTasks(props) {
   const { username } = useParams();
@@ -22,7 +23,7 @@ function MyTasks(props) {
     fetchPosts();
   }, []);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
 
   const CustomLink = styled(Link)`
     max-width: 350px;

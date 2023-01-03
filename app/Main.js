@@ -24,14 +24,16 @@ import NotFound from "./components/NotFound";
 import ContentLoggedOut from "./components/ContentLoggedOut";
 
 function Main() {
+  const loggedData = localStorage.getItem("user");
+  const parsedLoggedData = loggedData ? JSON.parse(loggedData) : {};
   const initialState = {
-    loggedIn: Boolean(localStorage.getItem("TodoAppToken")),
+    loggedIn: Boolean(parsedLoggedData.token),
     flashMessages: [],
     errorMessage: [],
     user: {
-      token: localStorage.getItem("TodoAppToken"),
-      username: localStorage.getItem("TodoAppUsername"),
-      avatar: localStorage.getItem("TodoAppAvatar")
+      token: parsedLoggedData.token,
+      username: parsedLoggedData.username,
+      avatar: parsedLoggedData.avatar
     }
   };
 
@@ -55,13 +57,9 @@ function Main() {
 
   useEffect(() => {
     if (state.loggedIn) {
-      localStorage.setItem("TodoAppToken", state.user.token);
-      localStorage.setItem("TodoAppUsername", state.user.username);
-      localStorage.setItem("TodoAppAvatar", state.user.avatar);
+      localStorage.setItem("user", JSON.stringify(state.user));
     } else {
-      localStorage.removeItem("TodoAppToken");
-      localStorage.removeItem("TodoAppUsername");
-      localStorage.removeItem("TodoAppAvatar");
+      localStorage.removeItem("user");
     }
   }, [state.loggedIn]);
 

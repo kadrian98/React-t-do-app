@@ -11,6 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Fab from "@mui/material/Fab";
 import EditIcon from "@mui/icons-material/Edit";
+import Loading from "./Loading";
 
 const useFetchPost = id => {
   const [post, setPost] = useState();
@@ -50,7 +51,7 @@ function ViewSinglePost() {
     return <NotFound />;
   }
 
-  if (isLoading) return <Page title="...">Loading...</Page>;
+  if (isLoading) return <Loading />;
 
   const date = new Date(post.createdDate);
   const dateFromatted = `${

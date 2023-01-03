@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Page from "./Page";
+
 import { Logo } from "./style/formik.style";
 
 function About() {
@@ -11,15 +12,15 @@ function About() {
           <div className="about-content">
             <div className="offer-container">
               Private account
-              <Logo src="logo.png" alt="" />
+              {/* <Logo src="logo.png" alt="" /> */}
             </div>
             <div className="offer-container">
               Functionaly to-do list
-              <img src="/logo.png" alt="" />
+              {/* <img src={logo} alt="" /> */}
             </div>
             <div className="offer-container">
               React solution
-              <img src="./logo.png" alt="" />
+              {/* <img src="./logo.png" alt="" /> */}
             </div>
           </div>
         </section>
