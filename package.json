@@ -2,7 +2,7 @@
   "name": "todo-react",
   "version": "1.0.0",
   "description": "",
-  "main": "menu.js",
+  "main": "Main.js",
   "scripts": {
     "dev": "npm-run-all -s generate webpackDev",
     "webpackDev": "webpack serve",
