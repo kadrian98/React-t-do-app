@@ -4,13 +4,6 @@ import Page from "./Page";
 import Axios from "axios";
 import DispatchContext from "../DispatchContext";
 import StateContext from "../StateContext";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDateTimePicker
-} from "@material-ui/pickers";
-import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
-import styled from "styled-components";
 
 function CreatePost(props) {
   const [title, setTitle] = useState();
@@ -56,15 +49,6 @@ function CreatePost(props) {
     <Page title="Create Post">
       <h1 className="formHeader">Type down your to do event!</h1>
       <form onSubmit={handleSubmit}>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDateTimePicker
-            label="Date of event"
-            format="d MMM yyyy h:mm a"
-            value={selectedDate}
-            onChange={handleDateChange}
-          />
-        </MuiPickersUtilsProvider>
-
         <section id="createPostSection">
           <input
             onChange={e => setTitle(e.target.value)}
@@ -81,7 +65,6 @@ function CreatePost(props) {
             placeholder="Description"
             autoComplete="off"
           />
-          ({printDate(selectedDate)})
           <button className="postSubmit" type="submit">
             Add
           </button>

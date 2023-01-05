@@ -14,8 +14,13 @@ const LINKS = [
   }
 ];
 
-export const Menu = () => {
+export const Menu = props => {
   const appState = useContext(StateContext);
+  const headerContent = appState.loggedIn ? (
+    <HeaderLoggedIn openMenu={openMenu} />
+  ) : (
+    <HeaderLoggedOut openMenu={openMenu} />
+  );
 
   const [openClass, setOpenClass] = useState(false);
 
@@ -39,12 +44,7 @@ export const Menu = () => {
             <Link to={link.path}>{link.title}</Link>
           </li>
         ))}
-
-        {appState.loggedIn ? (
-          <HeaderLoggedIn openMenu={openMenu} />
-        ) : (
-          <HeaderLoggedOut openMenu={openMenu} />
-        )}
+        {!props.staticEmpty ? headerContent : ""}
       </ul>
     </>
   );

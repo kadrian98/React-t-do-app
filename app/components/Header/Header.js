@@ -9,7 +9,7 @@ function Header(props) {
         <Link to="/" className="brand">
           <span className="material-symbols-outlined"> rocket_launch </span>
           <span>
-            <strong>TO-DO REACT</strong>
+            <strong>TO-DO REACT!</strong>
           </span>
         </Link>
         <Menu />

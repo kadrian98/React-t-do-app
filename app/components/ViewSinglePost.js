@@ -56,7 +56,7 @@ function ViewSinglePost() {
   const date = new Date(post.createdDate);
   const dateFromatted = `${
     date.getMonth() + 1
-  }/ ${date.getDate()}/${date.getFullYear()}`;
+  }/${date.getDate()}/${date.getFullYear()}`;
 
   function isOwner() {
     if (appState.loggedIn) {
@@ -119,7 +119,6 @@ function ViewSinglePost() {
       <section id="createPostSection">
         <h1>{post.title}</h1>
         <h5>{post.body}</h5>
-        <h5>{post.selectedDate}</h5>
         <p>{dateFromatted}</p>
       </section>
     </Page>

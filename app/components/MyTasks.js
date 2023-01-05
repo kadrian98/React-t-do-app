@@ -40,7 +40,7 @@ function MyTasks(props) {
         const date = new Date(post.createdDate);
         const dateFromatted = `${
           date.getMonth() + 1
-        }/ ${date.getDate()}/${date.getFullYear()}`;
+        }/${date.getDate()}/${date.getFullYear()}`;
         return (
           <CustomLink
             key={post._id}
