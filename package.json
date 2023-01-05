@@ -1,8 +1,9 @@
 {
-  "name": "todo-react",
+  "name": "react",
   "version": "1.0.0",
   "description": "",
   "main": "Main.js",
+  "type": "module",
   "scripts": {
     "dev": "npm-run-all -s generate webpackDev",
     "webpackDev": "webpack serve",
