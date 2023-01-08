@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import { useImmerReducer } from "use-immer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Axios from "axios";
-Axios.defaults.baseURL = process.env.BACKENDURL || "";
+Axios.defaults.baseURL =
+  process.env.BACKENDURL || "https://reactbackend-n4us.onrender.com";
 
 import StateContext from "./StateContext";
 import DispatchContext from "./DispatchContext";
