@@ -130,10 +130,11 @@ nav ul.dropdown-list {
   list-style-type: none;
   display: block;
   background: var(--smoke);
-  padding: 6px 16px;
+  padding: 23px 16px;
   position: absolute;
   width: max-content;
   z-index: 9999;
+  top: 52%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
