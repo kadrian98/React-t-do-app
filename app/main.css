@@ -38,9 +38,15 @@ body {
   align-items: center;
 }
 .nav-wrapper ul.nav-list li {
-  margin-left: 30px;
-  padding: 20px 0;
+  margin: 1rem 0.5rem;
   position: relative;
+}
+a {
+  text-decoration: none;
+}
+
+ul.nav-list {
+  padding-left: 0 !important;
 }
 
 .nav-wrapper ul.nav-list li a {
@@ -194,6 +200,10 @@ nav ul.dropdown-list {
     pointer-events: none;
     transition: all 0.3s ease-in-out;
     z-index: 10;
+  }
+
+  .nav-wrapper ul.nav-list li {
+    margin: 1rem auto;
   }
 
   ul.nav-list.open {
