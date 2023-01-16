@@ -4,11 +4,15 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material";
 import Loading from "./Loading";
+import { useSelector } from "react-redux";
+import { selectProfilePostCount } from "../stores/userProfileSlice";
 
-function MyTasks(props) {
+function MyTasks() {
   const { username } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+
+  const postCount = useSelector(selectProfilePostCount);
 
   useEffect(() => {
     async function fetchPosts() {
@@ -33,9 +37,7 @@ function MyTasks(props) {
 
   return (
     <div className="list-group">
-      <h1 className="task-amount-counter">
-        Amount of tasks: {props.profileData.counts.postCount}
-      </h1>
+      <h1 className="task-amount-counter">Amount of tasks: {postCount}</h1>
       {posts.map(post => {
         const date = new Date(post.createdDate);
         const dateFromatted = `${

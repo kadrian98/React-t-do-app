@@ -22,6 +22,8 @@ import Profile from "./components/Profile";
 import EditPost from "./components/EditPost";
 import NotFound from "./components/NotFound";
 import ContentLoggedOut from "./components/ContentLoggedOut";
+import store from "./components/redux/store";
+import { Provider } from "react-redux";
 
 function Main() {
   const loggedData = localStorage.getItem("user");
@@ -54,6 +56,7 @@ function Main() {
     }
   }
   const [state, dispatch] = useImmerReducer(ourReducer, initialState);
+  console.log(state, "state");
 
   useEffect(() => {
     if (state.loggedIn) {
@@ -94,26 +97,28 @@ function Main() {
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
-        <BrowserRouter>
-          <FlashMessages messages={state.flashMessages} />
-          <ErrorMessage messages={state.errorMessage} />
-          <Header />
-          <Routes>
-            <Route path="/Profile/:username/*" element={<Profile />} />
-            <Route
-              path="/"
-              element={
-                state.loggedIn ? <ContentLoggedIn /> : <ContentLoggedOut />
-              }
-            />
-            <Route path="/Post/:id" element={<ViewSinglePost />} />
-            <Route path="/Post/:id/edit" element={<EditPost />} />
-            <Route path="/CreatePost" element={<CreatePost />} />
-            <Route path="/About" element={<About />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <FlashMessages messages={state.flashMessages} />
+            <ErrorMessage messages={state.errorMessage} />
+            <Header />
+            <Routes>
+              <Route path="/Profile/:username/*" element={<Profile />} />
+              <Route
+                path="/"
+                element={
+                  state.loggedIn ? <ContentLoggedIn /> : <ContentLoggedOut />
+                }
+              />
+              <Route path="/Post/:id" element={<ViewSinglePost />} />
+              <Route path="/Post/:id/edit" element={<EditPost />} />
+              <Route path="/CreatePost" element={<CreatePost />} />
+              <Route path="/About" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        </Provider>
       </DispatchContext.Provider>
     </StateContext.Provider>
   );

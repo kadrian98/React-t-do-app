@@ -652,6 +652,7 @@ button[type="submit"]:hover {
 
 #postingSection {
   text-align: center;
+  display: block;
 }
 .upper {
   text-transform: capitalize;
@@ -678,6 +679,11 @@ button[type="submit"]:hover {
 }
 
 @media only screen and (max-width: 860px) {
+  .postInput {
+    width: 300px;
+    margin: 0.5rem auto;
+    padding: 1rem;
+  }
   #createPostSection {
     display: flex;
     flex-direction: column;
@@ -846,4 +852,9 @@ button[type="submit"]:hover {
 
 .MuiFormControl-root.MuiTextField-root.css-i44wyl {
   margin: 1rem auto;
+}
+
+.tasksAmount {
+  text-transform: initial;
+  font-size: 18px;
 }

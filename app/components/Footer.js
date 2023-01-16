@@ -5,9 +5,13 @@ function Footer() {
   return (
     <section id="footer">
       Copyright &copy; 2022{" "}
-      <Link className="footerLink" to="https://github.com/kadrian98">
+      <a
+        className="footerLink"
+        href="https://github.com/kadrian98"
+        target="_blank"
+      >
         Adrian Kaczmarek
-      </Link>
+      </a>
       . All rights reserved
     </section>
   );
